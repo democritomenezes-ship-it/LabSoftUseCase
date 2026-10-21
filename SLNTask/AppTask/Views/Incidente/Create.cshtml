@@ -10,27 +10,23 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form action="/Incidente/Create" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-group">
-                <label asp-for="DescricaoProblema" class="control-label"></label>
-                <input asp-for="DescricaoProblema" class="form-control" />
-                <span asp-validation-for="DescricaoProblema" class="text-danger"></span>
+                <label for="DescricaoProblema" class="control-label">Descrição do Problema</label>
+                <input type="text" name="DescricaoProblema" id="DescricaoProblema" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="DataIncidente" class="control-label"></label>
-                <input asp-for="DataIncidente" class="form-control" />
-                <span asp-validation-for="DataIncidente" class="text-danger"></span>
+                <label for="DataIncidente" class="control-label">Data Incidente</label>
+                <input type="datetime-local" name="DataIncidente" id="DataIncidente" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Solucao" class="control-label"></label>
-                <input asp-for="Solucao" class="form-control" />
-                <span asp-validation-for="Solucao" class="text-danger"></span>
+                <label for="Solucao" class="control-label">Solução</label>
+                <input type="text" name="Solucao" id="Solucao" class="form-control" />
             </div>
             <div class="form-group">
-                <label asp-for="Resolvido" class="control-label"></label>
-                <input asp-for="Resolvido" class="form-control" />
-                <span asp-validation-for="Resolvido" class="text-danger"></span>
+                <label for="Resolvido" class="control-label">Resolvido</label>
+                <input type="checkbox" name="Resolvido" id="Resolvido" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -44,5 +40,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

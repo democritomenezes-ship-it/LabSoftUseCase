@@ -10,12 +10,11 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <form action="/CentralDeCusto/Create" method="post">
+            @Html.AntiForgeryToken()
             <div class="form-group">
-                <label asp-for="NomeCentral" class="control-label"></label>
-                <input asp-for="NomeCentral" class="form-control" />
-                <span asp-validation-for="NomeCentral" class="text-danger"></span>
+                <label for="NomeCentral" class="control-label">Nome Central</label>
+                <input type="text" name="NomeCentral" id="NomeCentral" class="form-control" />
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
@@ -29,5 +28,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
